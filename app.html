@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome bijon</h1>
+    <input type="name" id="name"/>
+    <input type="phone" id="phone"/>
+    <button onclick="handlesend()">send</button>
+    <script src="/socket.io/socket.io.js">
+        
+    </script>
+    <script>
+        const socket = io()
+        const handlesend=()=>{
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            socket.send({name,phone})
+
+        }
+
+        socket.on('message',(data)=>{
+            console.log(data)
+        })
+    </script>
+</body>
+</html>
